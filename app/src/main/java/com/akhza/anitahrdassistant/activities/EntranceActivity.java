@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.akhza.anitahrdassistant.GetStartedActivity;
 import com.akhza.anitahrdassistant.R;
-import com.akhza.anitahrdassistant.SignupActivity;
 
 public class EntranceActivity extends AppCompatActivity {
 

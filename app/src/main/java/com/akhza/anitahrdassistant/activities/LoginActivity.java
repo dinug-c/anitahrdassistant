@@ -1,10 +1,11 @@
-package com.akhza.anitahrdassistant;
+package com.akhza.anitahrdassistant.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.EditText;
 
+import com.akhza.anitahrdassistant.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
