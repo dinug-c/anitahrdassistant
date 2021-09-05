@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "689934306269",
+    "project_id": "anitahrd-data",
+    "storage_bucket": "anitahrd-data.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689934306269:android:7923e052704b0f899bc434",
+        "android_client_info": {
+          "package_name": "com.akhza.anitahrdassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689934306269-qrkuim1dvh0479jgktji38dapmh7von1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.akhza.anitahrdassistant",
+            "certificate_hash": "5853558d9c9fbb6fd458d9ce30904ee81d2f1e6a"
+          }
+        },
+        {
+          "client_id": "689934306269-qfvimhus2531fs5gsiv361f9am850fnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAaRsSk_WKAEdgBjQnSrCpEASFTfXx0UA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689934306269-qfvimhus2531fs5gsiv361f9am850fnn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
