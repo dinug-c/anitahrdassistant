@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.HRDDashboardActivity">
+    tools:context=".activities.HRDDashboardActivity"
+    android:background="@color/white">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/hrddashboard_constraintLayout_header"
-        android:background="@drawable/gradient_blue">
+        android:background="@drawable/topbg">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -68,13 +69,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/hrddashboard_button_notifications"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.cardview.widget.CardView
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/hrddashboard_card_applicants"
         android:background="@drawable/header_applicants_card"
-        android:outlineSpotShadowColor="#00FF0000"
         app:layout_constraintBottom_toBottomOf="@id/hrddashboard_constraintLayout_header">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                 android:textSize="32sp"
                 android:textColor="@color/colorBlue"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </FrameLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

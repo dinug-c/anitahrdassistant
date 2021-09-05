@@ -18,7 +18,8 @@ class HRDDashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hrddashboard)
 
-        hrddashboard_card_applicants.setBackgroundResource(R.drawable.header_applicants_card)
+        //ini tak del yo, tak ganti atik framelayout
+        //hrddashboard_card_applicants.setBackgroundResource(R.drawable.header_applicants_card)
 
         hrddashboard_button_sortdate.onClick {
             sortBy = "dateSchedule"
