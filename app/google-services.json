@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "689934306269",
-    "project_id": "anitahrd-data",
-    "storage_bucket": "anitahrd-data.appspot.com"
+    "project_number": "632677253262",
+    "project_id": "anita-hrd-asssistant",
+    "storage_bucket": "anita-hrd-asssistant.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:689934306269:android:7923e052704b0f899bc434",
+        "mobilesdk_app_id": "1:632677253262:android:23455993255e79d05c49df",
         "android_client_info": {
-          "package_name": "com.akhza.anitahrdassistant"
+          "package_name": "com.akhza.anitahrdassistant.activities"
         }
       },
       "oauth_client": [
         {
-          "client_id": "689934306269-qrkuim1dvh0479jgktji38dapmh7von1.apps.googleusercontent.com",
+          "client_id": "632677253262-kppeqh5nmal6djgia4s1kgn6opbb045k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.akhza.anitahrdassistant",
-            "certificate_hash": "5853558d9c9fbb6fd458d9ce30904ee81d2f1e6a"
+            "package_name": "com.akhza.anitahrdassistant.activities",
+            "certificate_hash": "7569b0f0a373bf602e3814116855970efb473d48"
           }
         },
         {
-          "client_id": "689934306269-qfvimhus2531fs5gsiv361f9am850fnn.apps.googleusercontent.com",
+          "client_id": "632677253262-0kmoc2nod4pdg3q7u06jtlk9f3qh3v1i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBAaRsSk_WKAEdgBjQnSrCpEASFTfXx0UA"
+          "current_key": "AIzaSyAJ55HyWw9dhhc5ZXpIAv9GZrY18OlEtOc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "689934306269-qfvimhus2531fs5gsiv361f9am850fnn.apps.googleusercontent.com",
+              "client_id": "632677253262-0kmoc2nod4pdg3q7u06jtlk9f3qh3v1i.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
