@@ -1,4 +1,4 @@
-package com.akhza.anitahrdassistant;
+package com.akhza.anitahrdassistant.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

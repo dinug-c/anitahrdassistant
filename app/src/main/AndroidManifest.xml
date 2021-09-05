@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Anitahrdassistant">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".activities.HRDCreateInterviewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.HRDDetailInterviewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.HRDDashboardActivity"
+            android:exported="true" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
