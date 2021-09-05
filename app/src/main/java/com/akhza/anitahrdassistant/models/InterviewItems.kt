@@ -20,5 +20,8 @@ data class InterviewItems(
         var emailRecruiter: String? = null,
 
         //apakah video call sudah dimulai
-        var isStarting: Boolean? = null
+        var isStarting: Boolean? = null,
+
+        //posisi
+        var position: String? = null
 )

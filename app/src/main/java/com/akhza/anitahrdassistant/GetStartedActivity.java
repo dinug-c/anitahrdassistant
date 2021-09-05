@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.akhza.anitahrdassistant.activities.HRDDashboardActivity;
+
 public class GetStartedActivity extends AppCompatActivity {
 
     @Override
@@ -15,7 +17,8 @@ public class GetStartedActivity extends AppCompatActivity {
 
         Button plmrbtn = findViewById(R.id.plmr_btn);
 
-        plmrbtn.setOnClickListener(view -> startActivity(new Intent(getApplication(), SignupActivity.class)));
+        //iki aku mau ngerubah tujuan activity ne, kanggo ngecek layoutku wkwk
+        plmrbtn.setOnClickListener(view -> startActivity(new Intent(getApplication(), HRDDashboardActivity.class)));
 
     }
 }

@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.protobuf.Any;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,31 +38,39 @@ public class SignupActivity extends AppCompatActivity {
 
         Button daftarbtn = findViewById(R.id.daftar_btn);
 
-        getuser = username.getText().toString();
-        getemail = useremail.getText().toString();
-        getpass = userpassword.getText().toString();
-
         daftarbtn.setOnClickListener(view -> {
+
+            /**3 baris dibawah iki mau asale neng luar onClick, nah pas tak tes
+             * kih gaiso, mergo email e kosong ("")
+             * sedangkan email e kui dinggo referensi ning database e
+             */
+            getuser = username.getText().toString();
+            getemail = useremail.getText().toString();
+            getpass = userpassword.getText().toString();
+
             if (username.getText().toString().isEmpty()
                     && userpassword.getText().toString().isEmpty()
                     && useremail.getText().toString().isEmpty()) {
                 Toast.makeText(SignupActivity.this, "Mohon untuk mengisi form", Toast.LENGTH_SHORT).show();
             } else {
-                Map<String, Object> user = new HashMap<>();
-                user.put("nama", username);
-                user.put("email", useremail);
-                user.put("password", userpassword);
-                user.put("position", "0");
+                Map<String, String> user = new HashMap<>();
+                user.put("name", getuser);
+                user.put("email", getemail);
+                user.put("password", getpass);
+                user.put("position", "2");
+                user.put("company", "-");
+                user.put("discipline", "-");
 
                 db.collection("accounts")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        .document(getemail)
+                        .set(user)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
+                            public void onSuccess(Void unused) {
                                 Toast.makeText(SignupActivity.this, "Pendaftaran Berhasil! Silakan untuk masuk kembali", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                             }
-                        })
+                       })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
