@@ -2,6 +2,7 @@ package com.akhza.anitahrdassistant.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.akhza.anitahrdassistant.R
 
 class HRDDashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

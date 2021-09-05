@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.akhza.anitahrdassistant.GetStartedActivity;
 import com.akhza.anitahrdassistant.R;
 import com.akhza.anitahrdassistant.SignupActivity;
 
@@ -19,6 +20,6 @@ public class EntranceActivity extends AppCompatActivity {
         Button mulai_btn = findViewById(R.id.mulai_btn);
 
         mulai_btn.setOnClickListener(view ->
-                startActivity(new Intent(getApplicationContext(), SignupActivity.class)));
+                startActivity(new Intent(getApplicationContext(), GetStartedActivity.class)));
     }
 }

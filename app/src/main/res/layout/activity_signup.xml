@@ -1,9 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupActivity">
+    tools:context=".SignupActivity"
+    android:background="@color/white">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/monsbold"
+        android:text="Daftar"
+        android:textColor="#20B6F6"
+        android:layout_marginTop="100dp"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="40dp"/>
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Silakan daftar untuk dapat menggunakan layanan aplikasi in"
+       android:layout_marginHorizontal="30dp"
+       android:layout_marginTop="160dp"
+       />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="200dp"
+        android:layout_gravity="center">
+
+        <EditText
+            android:drawableRight="@drawable/ic_person_pin_black_24dp"
+            android:drawablePadding="20sp"
+            android:id="@+id/user_email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="E-Mail"
+            android:inputType="textEmailAddress" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/form_bg"
+            />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_gravity="center">
+
+        <EditText
+            android:drawableRight="@drawable/ic_person_pin_black_24dp"
+            android:drawablePadding="20sp"
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="Username"
+            android:inputType="textPersonName" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/form_bg"
+            />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp">
+
+        <EditText
+            android:drawableRight="@drawable/ic_fingerprint_black_24dp"
+            android:drawablePadding="20sp"
+            android:id="@+id/user_pass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/form_bg"
+            />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/daftar_btn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/yellow_btn"
+        android:text="Daftar"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="50dp"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

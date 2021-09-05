@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //komentar
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

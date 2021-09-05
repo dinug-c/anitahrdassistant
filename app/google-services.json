@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:632677253262:android:23455993255e79d05c49df",
         "android_client_info": {
-          "package_name": "com.akhza.anitahrdassistant.activities"
+          "package_name": "com.akhza.anitahrdassistant"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "632677253262-kppeqh5nmal6djgia4s1kgn6opbb045k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.akhza.anitahrdassistant.activities",
+            "package_name": "com.akhza.anitahrdassistant",
             "certificate_hash": "7569b0f0a373bf602e3814116855970efb473d48"
           }
         },
