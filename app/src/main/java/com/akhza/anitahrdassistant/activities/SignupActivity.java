@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akhza.anitahrdassistant.R;
@@ -35,6 +36,11 @@ public class SignupActivity extends AppCompatActivity {
         userpassword = findViewById(R.id.user_pass);
 
         Button daftarbtn = findViewById(R.id.daftar_btn);
+        TextView logintxtbtn = findViewById(R.id.logintxt);
+
+        logintxtbtn.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        });
 
         daftarbtn.setOnClickListener(view -> {
 

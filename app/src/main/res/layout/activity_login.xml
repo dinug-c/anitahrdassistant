@@ -37,9 +37,10 @@
             android:drawablePadding="20sp"
             android:id="@+id/user_email"
             android:layout_width="match_parent"
+            android:layout_margin="10dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:hint="Username"
+            android:hint="E-mail"
             android:inputType="textEmailAddress" />
 
         <ImageView
@@ -65,6 +66,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:hint="Password"
+            android:layout_margin="10dp"
             android:inputType="textPassword" />
 
         <ImageView
