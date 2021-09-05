@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.akhza.anitahrdassistant.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -35,21 +36,24 @@ public class SignupActivity extends AppCompatActivity {
 
         Button daftarbtn = findViewById(R.id.daftar_btn);
 
-        getuser = username.getText().toString();
-        getemail = useremail.getText().toString();
-        getpass = userpassword.getText().toString();
-
         daftarbtn.setOnClickListener(view -> {
+
+            getuser = username.getText().toString();
+            getemail = useremail.getText().toString();
+            getpass = userpassword.getText().toString();
+
             if (username.getText().toString().isEmpty()
                     && userpassword.getText().toString().isEmpty()
                     && useremail.getText().toString().isEmpty()) {
                 Toast.makeText(SignupActivity.this, "Mohon untuk mengisi form", Toast.LENGTH_SHORT).show();
             } else {
                 Map<String, Object> user = new HashMap<>();
-                user.put("nama", username);
-                user.put("email", useremail);
-                user.put("password", userpassword);
-                user.put("position", "0");
+                user.put("company", "");
+                user.put("discpline", "username");
+                user.put("nama", getuser);
+                user.put("email", getemail);
+                user.put("password", getpass);
+                user.put("state", "0");
 
                 db.collection("accounts")
                         .add(user)
