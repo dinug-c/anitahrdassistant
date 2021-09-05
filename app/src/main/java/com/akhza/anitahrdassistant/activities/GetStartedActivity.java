@@ -18,8 +18,8 @@ public class GetStartedActivity extends AppCompatActivity {
 
         Button plmrbtn = findViewById(R.id.plmr_btn);
 
-        //iki aku mau ngerubah tujuan activity ne, kanggo ngecek layoutku wkwks
-        plmrbtn.setOnClickListener(view -> startActivity(new Intent(getApplication(), HRDDashboardActivity.class)));
+
+        plmrbtn.setOnClickListener(view -> startActivity(new Intent(getApplication(), SignupActivity.class)));
 
     }
 }

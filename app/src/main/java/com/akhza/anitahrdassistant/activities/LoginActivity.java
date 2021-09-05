@@ -52,8 +52,8 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot doc : task.getResult()) {
 
-                                        String a = doc.getString("Email");
-                                        String b = doc.getString("Password");
+                                        String a = doc.getString("email");
+                                        String b = doc.getString("password");
                                         String a1 = useremail.getText().toString().trim();
                                         String b1 = userpassword.getText().toString().trim();
                                         if (a.equalsIgnoreCase(a1) & b.equalsIgnoreCase(b1)) {

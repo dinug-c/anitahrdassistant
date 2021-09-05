@@ -48,12 +48,12 @@ public class SignupActivity extends AppCompatActivity {
                 Toast.makeText(SignupActivity.this, "Mohon untuk mengisi form", Toast.LENGTH_SHORT).show();
             } else {
                 Map<String, Object> user = new HashMap<>();
-                user.put("company", "");
-                user.put("discpline", "username");
                 user.put("nama", getuser);
+                user.put("company", " ");
+                user.put("discpline", " ");
                 user.put("email", getemail);
                 user.put("password", getpass);
-                user.put("state", "0");
+                user.put("state", "3");
 
                 db.collection("accounts")
                         .add(user)
