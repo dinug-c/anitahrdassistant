@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akhza.anitahrdassistant.R;
@@ -33,11 +34,16 @@ public class LoginActivity extends AppCompatActivity {
 
         useremail = findViewById(R.id.user_email);
         userpassword = findViewById(R.id.user_pass);
+        TextView havent = findViewById(R.id.haventtxt);
 
         getemail = useremail.getText().toString();
         getpass = userpassword.getText().toString();
 
         Button loginbtn = findViewById(R.id.login_btn);
+
+        havent.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+        });
 
         loginbtn.setOnClickListener(view -> {
             if (userpassword.getText().toString().isEmpty()
