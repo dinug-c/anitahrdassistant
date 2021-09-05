@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //komen
+        //komentar
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     }
