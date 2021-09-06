@@ -74,7 +74,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/hrddashboard_card_applicants"
-        android:background="@drawable/header_applicants_card"
         app:layout_constraintBottom_toBottomOf="@id/hrddashboard_constraintLayout_header">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
