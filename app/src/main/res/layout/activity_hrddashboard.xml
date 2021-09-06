@@ -60,10 +60,11 @@
             android:textColor="@color/colorBlue"
             android:fontFamily="@font/rubik_medium"
             android:textAllCaps="false"
+            android:id="@+id/hrddashboard_button_profile"
             android:layout_marginTop="16dp"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:background="@drawable/ic_baseline_notifications_24"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

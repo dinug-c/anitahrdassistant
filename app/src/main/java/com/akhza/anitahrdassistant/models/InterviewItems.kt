@@ -10,6 +10,9 @@ data class InterviewItems(
         //pembuat jadwal interview
         var emailHrd: String? = null,
 
+        //nama hrd
+        var nameHrd: String? = null,
+
         //jadwal interview
         var dateSchedule: String? = null,
 
@@ -18,6 +21,9 @@ data class InterviewItems(
 
         //calon pelamar
         var emailRecruiter: String? = null,
+
+        //nama pelamar
+        var nameRecruiter: String? = null,
 
         //apakah video call sudah dimulai
         var isStarting: Boolean? = null,

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,8 +23,10 @@ public class EntranceActivity extends AppCompatActivity {
 
         loginfo = this.getSharedPreferences("Login Info", Context.MODE_PRIVATE);
         Boolean logininfo = loginfo.getBoolean("log", false);
+        String email = loginfo.getString("email", "");
 
         if (logininfo == true) {
+            Log.d("EMAIL SHAREDPREF", email);
             startActivity(new Intent(getApplicationContext(), HRDDashboardActivity.class));
         } else {
             Toast.makeText(EntranceActivity.this, "Welcome", Toast.LENGTH_SHORT).show();

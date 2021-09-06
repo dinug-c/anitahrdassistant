@@ -10,6 +10,7 @@
         <entry key="..\:/Hackathon AI 2021/anitahrdassistant-master/app/src/main/res/drawable/header_applicants_card.xml" value="0.22552083333333334" />
         <entry key="..\:/Hackathon AI 2021/anitahrdassistant-master/app/src/main/res/drawable/interview_finished_background.xml" value="0.22552083333333334" />
         <entry key="..\:/Hackathon AI 2021/anitahrdassistant-master/app/src/main/res/layout-v28/activity_hrddashboard.xml" value="0.1693840579710145" />
+        <entry key="..\:/Hackathon AI 2021/anitahrdassistant-master/app/src/main/res/layout/activity_detail_profile.xml" value="0.25" />
         <entry key="..\:/Hackathon AI 2021/anitahrdassistant-master/app/src/main/res/layout/activity_hrdcreate_interview.xml" value="0.1743659420289855" />
         <entry key="..\:/Hackathon AI 2021/anitahrdassistant-master/app/src/main/res/layout/activity_hrddashboard.xml" value="0.22" />
         <entry key="..\:/Hackathon AI 2021/anitahrdassistant-master/app/src/main/res/layout/activity_hrddetail_interview.xml" value="0.1743659420289855" />
@@ -20,7 +21,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
