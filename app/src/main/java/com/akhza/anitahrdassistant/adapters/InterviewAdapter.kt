@@ -40,7 +40,11 @@ RecyclerView.Adapter<InterviewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View?): RecyclerView.ViewHolder(itemView!!) {
         fun bindData(data: InterviewItems, listener: (InterviewItems) -> Unit) {
-            itemView.items_interview_textView_name.text = data.nameRecruiter
+            if(data.nameRecruiter.isNullOrEmpty()) {
+                itemView.items_interview_textView_name.text = "Unassigned"
+            } else {
+                itemView.items_interview_textView_name.text = data.nameRecruiter
+            }
             itemView.items_interview_textView_pos.text = data.position
             itemView.items_interview_textView_date.text = "Interview on ${DateParser.getLongDate(data.dateSchedule.toString())}"
 

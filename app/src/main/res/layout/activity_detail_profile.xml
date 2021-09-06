@@ -220,5 +220,14 @@
             android:layout_gravity="center"
             android:id="@+id/detailProfile_progressBar_company"/>
     </androidx.cardview.widget.CardView>
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/detailprofile_cardView_company"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_red"
+        android:text="@string/sign_out"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:id="@+id/detailProfile_button_signOut"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

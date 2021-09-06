@@ -24,10 +24,15 @@ public class EntranceActivity extends AppCompatActivity {
         loginfo = this.getSharedPreferences("Login Info", Context.MODE_PRIVATE);
         Boolean logininfo = loginfo.getBoolean("log", false);
         String email = loginfo.getString("email", "");
+        String state = loginfo.getString("state", "");
 
         if (logininfo == true) {
             Log.d("EMAIL SHAREDPREF", email);
-            startActivity(new Intent(getApplicationContext(), HRDDashboardActivity.class));
+            if(state.equals("2")) {
+                startActivity(new Intent(getApplicationContext(), HRDDashboardActivity.class));
+            } else if(state.equals("3")) {
+                startActivity(new Intent(getApplicationContext(), ApplicantsDashboardActivity.class));
+            }
         } else {
             Toast.makeText(EntranceActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
         }

@@ -1,58 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".activities.HRDCreateInterviewActivity"
-    android:background="@drawable/blueshape">
+    android:background="@drawable/gradient_blue">
+    <Button
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/ic_baseline_arrow_back_ios_24"
+        android:id="@+id/hrdcreate_button_back"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/hrdcreate_button_back"
+        android:text="@string/create_interview"
+        android:fontFamily="@font/rubik"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginStart="10dp"
+        android:id="@+id/hrdcreate_textView_header"/>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/hrdcreate_textView_header"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="5dp"
+        android:id="@+id/hrdcreate_cardView_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/position"
+                android:textAllCaps="true"
+                android:fontFamily="@font/rubik"
+                android:textColor="@color/colorBlue2"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/hrdcreate_textView_positionStatic"/>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ex_game_designer"
+                android:fontFamily="@font/rubik_light"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/hrdcreate_textView_positionStatic"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/hrdcreate_editText_position"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/schedule"
+                android:textAllCaps="true"
+                android:fontFamily="@font/rubik"
+                android:textColor="@color/colorBlue2"
+                android:textSize="12sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/hrdcreate_editText_position"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/hrdcreate_textView_scheduleStatic"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hrdcreate_textView_scheduleStatic"
+                android:orientation="horizontal"
+                android:id="@+id/hrdcreate_linearLayout_buttons"
+                android:layout_marginTop="5dp">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:id="@+id/hrdcreate_button_date"
+                    android:paddingVertical="0dp"
+                    android:text="@string/pick_date"
+                    android:fontFamily="@font/rubik_light"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/button_blue_selected"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:id="@+id/hrdcreate_button_time"
+                    android:text="@string/set_time"
+                    android:fontFamily="@font/rubik_light"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/button_blue_selected"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hrdcreate_linearLayout_buttons"
+                android:orientation="horizontal"
+                android:id="@+id/hrdcreate_linearLayout_texts"
+                android:layout_marginTop="16dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    tools:text="Friday, 23 September 2021"
+                    android:fontFamily="@font/rubik_light"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:id="@+id/hrdcreate_textView_date"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    tools:text="23:59"
+                    android:fontFamily="@font/rubik_light"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:id="@+id/hrdcreate_textView_time"/>
+            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hrdcreate_linearLayout_texts"
+                android:layout_marginTop="16dp"
+                android:id="@+id/hrdcreate_checkbox"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/send_invitation_via_email"
+                android:backgroundTint="@color/white"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/hrdcreate_cardView_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/room_code"
+        android:fontFamily="@font/rubik_light"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:id="@+id/hrdcreate_textView_codeStatic"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="30dp"
-        android:layout_gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kode Undangan Waawancara"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="22dp"
-            android:fontFamily="@font/monsreg"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2405 - 5446 - 3001"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:fontFamily="@font/monsbold"
-            android:layout_gravity="center_horizontal"/>
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="30dp"/>
-
-        <Button
-            android:id="@+id/tanggal_btn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/yellow_btn"
-            android:text="Bagikan melalui Email"
-            android:textColor="@color/black"
-            android:textSize="10dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/monsebold"
-            />
-
-
-    </LinearLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        app:layout_constraintTop_toBottomOf="@id/hrdcreate_textView_codeStatic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        tools:text="132-410-1821"
+        android:fontFamily="@font/rubik_medium"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:id="@+id/hrdcreate_textView_codeDynamic"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintTop_toTopOf="@id/hrdcreate_textView_codeDynamic"
+        app:layout_constraintBottom_toBottomOf="@id/hrdcreate_textView_codeDynamic"
+        app:layout_constraintStart_toEndOf="@id/hrdcreate_textView_codeDynamic"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/ic_baseline_content_copy_24"
+        android:id="@+id/hrdcreate_button_copy"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/button_white"
+        android:text="@string/schedule_an_interview"
+        android:fontFamily="@font/rubik"
+        android:textColor="@color/colorBlue2"
+        android:id="@+id/hrdcreate_button_schedule"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
@@ -15,14 +14,12 @@ import com.akhza.anitahrdassistant.R
 import com.akhza.anitahrdassistant.adapters.InterviewAdapter
 import com.akhza.anitahrdassistant.models.InterviewItems
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_applicants_dashboard.*
-import kotlinx.android.synthetic.main.activity_hrddashboard.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.textColor
 
-class HRDDashboardActivity : AppCompatActivity() {
+class ApplicantsDashboardActivity : AppCompatActivity() {
 
     var sortBy: String? = ""
 
@@ -30,11 +27,10 @@ class HRDDashboardActivity : AppCompatActivity() {
     lateinit var adapter: InterviewAdapter
     var interviewList: MutableList<InterviewItems> = mutableListOf()
 
-    @SuppressLint("NotifyDataSetChanged")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hrddashboard)
+        setContentView(R.layout.activity_applicants_dashboard)
 
         db = FirebaseFirestore.getInstance()
 
@@ -49,32 +45,31 @@ class HRDDashboardActivity : AppCompatActivity() {
                     "dateSchedule" to it.dateSchedule, "dateCreated" to it.dateCreated,
                     "emailRecruiter" to it.emailRecruiter, "nameRecruiter" to it.nameRecruiter,
                     "isStarting" to it.isStarting, "position" to it.position,
-                    "state" to "2"
+                    "state" to "3"
             )
         }
 
         adapter.listInterview = interviewList
-        hrddashboard_recyclerView_content.layoutManager = LinearLayoutManager(this)
-        hrddashboard_recyclerView_content.adapter = adapter
-        hrddashboard_recyclerView_content.addItemDecoration(
+        applicantsdashboard_recyclerView_content.layoutManager = LinearLayoutManager(this)
+        applicantsdashboard_recyclerView_content.addItemDecoration(
                 DividerItemDecoration(
                         this,
                         LinearLayoutManager.VERTICAL
                 )
         )
+        applicantsdashboard_recyclerView_content.adapter = adapter
         adapter.notifyDataSetChanged()
-
         loadBasicProfile(email)
         setSortDate(true)
 
         sortBy = "dateSchedule"
         loadInterviewSchedule(email, sortBy)
 
-        hrddashboard_button_sortdate.onClick {
+        applicantsdashboard_button_sortdate.onClick {
             interviewList.clear()
             sortBy = "dateSchedule"
             loadInterviewSchedule(email, sortBy)
-            hrddashboard_progressBar.isVisible = true
+            applicantsdashboard_progressBar.isVisible = true
             setSortDate(true)
             setSortPos(false)
 
@@ -84,11 +79,11 @@ class HRDDashboardActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
-        hrddashboard_button_sortpos.onClick {
+        applicantsdashboard_button_sortpos.onClick {
             interviewList.clear()
             sortBy = "position"
             loadInterviewSchedule(email, sortBy)
-            hrddashboard_progressBar.isVisible = true
+            applicantsdashboard_progressBar.isVisible = true
             setSortDate(false)
             setSortPos(true)
 
@@ -98,14 +93,13 @@ class HRDDashboardActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
-        hrddashboard_button_profile.onClick {
+        applicantsdashboard_button_profile.onClick {
             startActivity<DetailProfileActivity>("email" to email)
         }
 
-        hrddashboard_fab_add.onClick {
-            startActivity<HRDCreateInterviewActivity>("email" to email, "name" to hrddashboard_textView_name.text, "company" to hrddashboard_textView_company.text)
+        applicantsdashboard_fab_add.onClick {
+            startActivity<ApplicantsJoinInterviewActivity>("email" to email, "name" to applicantsdashboard_textView_name.text)
         }
-
     }
 
     private fun loadBasicProfile(email: String?) {
@@ -113,8 +107,7 @@ class HRDDashboardActivity : AppCompatActivity() {
                 .get().addOnCompleteListener { taskId ->
                     if(taskId.isSuccessful) {
                         for (ds in taskId.result!!) {
-                            hrddashboard_textView_name.text = ds.getString("name")
-                            hrddashboard_textView_company.text = ds.getString("company")
+                            applicantsdashboard_textView_name.text = ds.getString("name")
                         }
                     }
                 }
@@ -122,7 +115,7 @@ class HRDDashboardActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun loadInterviewSchedule(email: String?, sortBy: String?) {
-        db.collection("interviews").whereEqualTo("emailHrd", email)
+        db.collection("interviews").whereEqualTo("emailRecruiter", email)
                 .get().addOnCompleteListener { task ->
                     if(task.isSuccessful) {
                         for (ds in task.result!!) {
@@ -136,7 +129,7 @@ class HRDDashboardActivity : AppCompatActivity() {
                             interItems.emailHrd = ds.getString("emailHrd")
                             interItems.isStarting = ds.getString("isStarting").toBoolean()
                             interItems.nameHrd = ds.getString("nameHrd")
-                            interItems.nameRecruiter = ds.getString("nameRecruiter")
+                            interItems.nameRecruiter = ds.getString("company")
 
                             interviewList.addAll(listOf(interItems))
                             Log.d("INTERVIEW SCHEDULE SIZE", "${interviewList.size}")
@@ -155,8 +148,8 @@ class HRDDashboardActivity : AppCompatActivity() {
                             }
 
                             adapter.notifyDataSetChanged()
-                            hrddashboard_progressBar.isVisible = false
-                            hrddashboard_recyclerView_content.isVisible = true
+                            applicantsdashboard_progressBar.isVisible = false
+                            applicantsdashboard_recyclerView_content.isVisible = true
 
                             Log.d("APPLICANTS", "${interviewList[0].emailRecruiter}")
                         }
@@ -169,22 +162,22 @@ class HRDDashboardActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     fun setSortDate(state: Boolean) {
         if(state) {
-            hrddashboard_button_sortdate.textColor = Color.WHITE
-            hrddashboard_button_sortdate.setBackgroundResource(R.drawable.button_blue_selected)
+            applicantsdashboard_button_sortdate.textColor = Color.WHITE
+            applicantsdashboard_button_sortdate.setBackgroundResource(R.drawable.button_blue_selected)
         } else {
-            hrddashboard_button_sortdate.textColor = getColor(R.color.colorBlue2)
-            hrddashboard_button_sortdate.setBackgroundResource(R.drawable.button_blue_unselected)
+            applicantsdashboard_button_sortdate.textColor = getColor(R.color.colorBlue2)
+            applicantsdashboard_button_sortdate.setBackgroundResource(R.drawable.button_blue_unselected)
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun setSortPos(state: Boolean) {
         if(state) {
-            hrddashboard_button_sortpos.textColor = Color.WHITE
-            hrddashboard_button_sortpos.setBackgroundResource(R.drawable.button_blue_selected)
+            applicantsdashboard_button_sortpos.textColor = Color.WHITE
+            applicantsdashboard_button_sortpos.setBackgroundResource(R.drawable.button_blue_selected)
         } else {
-            hrddashboard_button_sortpos.textColor = getColor(R.color.colorBlue2)
-            hrddashboard_button_sortpos.setBackgroundResource(R.drawable.button_blue_unselected)
+            applicantsdashboard_button_sortpos.textColor = getColor(R.color.colorBlue2)
+            applicantsdashboard_button_sortpos.setBackgroundResource(R.drawable.button_blue_unselected)
         }
     }
 }

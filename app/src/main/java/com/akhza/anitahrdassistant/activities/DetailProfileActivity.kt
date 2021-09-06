@@ -9,7 +9,9 @@ import androidx.core.view.isVisible
 import com.akhza.anitahrdassistant.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_detail_profile.*
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 class DetailProfileActivity : AppCompatActivity() {
 
@@ -31,6 +33,24 @@ class DetailProfileActivity : AppCompatActivity() {
 
         detailprofile_button_back.onClick {
             onBackPressed()
+        }
+        
+        detailProfile_button_signOut.onClick { 
+            alert ("Are you sure want to sign out of this account?", "Sign Out"){ 
+                negativeButton("BACK") {}
+                positiveButton("OK") {
+                    val sharedPref = getSharedPreferences("Login Info", MODE_PRIVATE)
+                    val sharedEditor = sharedPref.edit()
+                    sharedEditor.putBoolean("log", false)
+                    sharedEditor.putString("email", "")
+                    sharedEditor.putString("pass", "")
+                    sharedEditor.putString("name", "")
+
+                    sharedEditor.apply()
+
+                    startActivity<MainActivity>()
+                }
+            }.show()
         }
     }
 

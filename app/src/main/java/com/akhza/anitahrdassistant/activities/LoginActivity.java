@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                         String a = doc.getString("email");
                                         String b = doc.getString("password");
                                         String c = doc.getString("name");
+                                        String state = doc.getString("state");
                                         getId = doc.getId();
                                         String a1 = useremail.getText().toString().trim();
                                         String b1 = userpassword.getText().toString().trim();
@@ -76,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                             logedit.putString("email", a); // save data email,pass, dan nama ke sharepref
                                             logedit.putString("pass", b);
                                             logedit.putString("name", c);
+                                            logedit.putString("state", state);
                                             logedit.apply();
 
                                             Map<String, Object> upinfo = new HashMap<>();
@@ -96,9 +98,14 @@ public class LoginActivity extends AppCompatActivity {
                                                         }
                                                     });
 
+                                            if(state.equals("2")) {
+                                                Intent home = new Intent(LoginActivity.this, HRDDashboardActivity.class);
+                                                startActivity(home);
+                                            } else if (state.equals("3")) {
+                                                Intent home = new Intent(LoginActivity.this, ApplicantsDashboardActivity.class);
+                                                startActivity(home);
+                                            }
 
-                                            Intent home = new Intent(LoginActivity.this, HRDDashboardActivity.class);
-                                            startActivity(home);
                                             Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
                                             break;
                                         } else {
