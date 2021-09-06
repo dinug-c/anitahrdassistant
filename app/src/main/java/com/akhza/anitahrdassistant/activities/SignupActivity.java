@@ -59,6 +59,7 @@ public class SignupActivity extends AppCompatActivity {
                 user.put("discpline", " ");
                 user.put("email", getemail);
                 user.put("password", getpass);
+                user.put("online", "0");
                 user.put("state", "3");
 
                 db.collection("accounts")

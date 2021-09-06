@@ -60,12 +60,16 @@ public class LoginActivity extends AppCompatActivity {
 
                                         String a = doc.getString("email");
                                         String b = doc.getString("password");
+                                        String c = doc.getString("name");
                                         String a1 = useremail.getText().toString().trim();
                                         String b1 = userpassword.getText().toString().trim();
                                         if (a.equalsIgnoreCase(a1) & b.equalsIgnoreCase(b1)) {
 
                                             SharedPreferences.Editor logedit = loginfo.edit();
                                             logedit.putBoolean("log", true);
+                                            logedit.putString("email", a); // save data email,pass, dan nama ke sharepref
+                                            logedit.putString("pass", b);
+                                            logedit.putString("name", c);
                                             logedit.apply();
 
                                             Intent home = new Intent(LoginActivity.this, HRDDashboardActivity.class);

@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activities.GetStartedActivity"></activity>
+        <activity android:name=".OutgoingIncomingActivity"></activity>
+        <activity android:name=".activities.GetStartedActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SignupActivity" />
         <activity android:name=".activities.EntranceActivity" />
