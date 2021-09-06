@@ -14,15 +14,20 @@ import android.widget.Toast;
 
 import com.akhza.anitahrdassistant.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText useremail, userpassword;
-    String getemail, getpass;
+    String getemail, getpass, getId;
     SharedPreferences loginfo;
 
     @Override
@@ -61,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                         String a = doc.getString("email");
                                         String b = doc.getString("password");
                                         String c = doc.getString("name");
+                                        getId = doc.getId();
                                         String a1 = useremail.getText().toString().trim();
                                         String b1 = userpassword.getText().toString().trim();
                                         if (a.equalsIgnoreCase(a1) & b.equalsIgnoreCase(b1)) {
@@ -71,6 +77,25 @@ public class LoginActivity extends AppCompatActivity {
                                             logedit.putString("pass", b);
                                             logedit.putString("name", c);
                                             logedit.apply();
+
+                                            Map<String, Object> upinfo = new HashMap<>();
+                                            upinfo.put("online", "0");
+
+                                            // update db status akun menjadi online
+                                            db.collection("accounts").document(getId).update(upinfo)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(LoginActivity.this, "Hi, Again!", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+
 
                                             Intent home = new Intent(LoginActivity.this, HRDDashboardActivity.class);
                                             startActivity(home);
