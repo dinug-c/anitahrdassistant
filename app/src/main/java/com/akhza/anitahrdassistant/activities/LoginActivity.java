@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                                             logedit.apply();
 
                                             Map<String, Object> upinfo = new HashMap<>();
-                                            upinfo.put("online", "0");
+                                            upinfo.put("online", "1");
 
                                             // update db status akun menjadi online
                                             db.collection("accounts").document(getId).update(upinfo)
