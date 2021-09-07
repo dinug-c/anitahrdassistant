@@ -1,8 +1,6 @@
 package com.akhza.anitahrdassistant.activities
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Intent
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +26,8 @@ class HRDDetailInterviewActivity : AppCompatActivity() {
     lateinit var firestore: FirebaseFirestore
 
     lateinit var getsetdata: getsetExpression
+    lateinit var speechtext: SharedPreferences
+    lateinit var summarytext: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +36,15 @@ class HRDDetailInterviewActivity : AppCompatActivity() {
         intentDetail = intent
         firestore = FirebaseFirestore.getInstance()
         getsetdata = getsetExpression();
+        speechtext = this.getSharedPreferences("speech", Context.MODE_PRIVATE)
+
 
         roomCode = intentDetail.getStringExtra("roomCode").toString()
         state = intentDetail.getStringExtra("state").toString()
 
         if(state == "2") {
             hrddetail_textView_expressionError.text = getsetdata.expressiondata;
-            hrddetail_textView_verbalError.text = "No result"
+            hrddetail_textView_verbalError.text = speechtext.getString("speechtext", "none")
             hrddetail_button_salary.isGone = false
         } else {
             hrddetail_textView_expressionError.text = "Applicants aren't allowed to see this result"

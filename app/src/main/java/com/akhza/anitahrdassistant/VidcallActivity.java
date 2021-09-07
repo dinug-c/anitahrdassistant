@@ -6,12 +6,26 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -21,6 +35,8 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class VidcallActivity extends Activity implements CameraBridgeViewBase.CvCameraViewListener2{
     private static final String TAG="MainActivity";
@@ -30,6 +46,11 @@ public class VidcallActivity extends Activity implements CameraBridgeViewBase.Cv
     private CameraBridgeViewBase mOpenCvCameraView;
     // call java class
     private facialExpressionRecognition facialExpressionRecognition;
+    private FrameLayout frameLayout;
+    private SpeechRecognizer speechRecognizer;
+    private Intent speechRecognizerIntent;
+    private String keeper = "";
+    SharedPreferences analysistext;
 
     private BaseLoaderCallback mLoaderCallback =new BaseLoaderCallback(this) {
         @Override
@@ -69,8 +90,6 @@ public class VidcallActivity extends Activity implements CameraBridgeViewBase.Cv
 
         setContentView(R.layout.activity_vidcall);
 
-
-
         mOpenCvCameraView=(CameraBridgeViewBase) findViewById(R.id.frame_Surface);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
@@ -86,7 +105,99 @@ public class VidcallActivity extends Activity implements CameraBridgeViewBase.Cv
             e.printStackTrace();
         }
 
+        //speech recoginition
+        analysistext = this.getSharedPreferences("speech", Context.MODE_PRIVATE);
+        checkVoiceCommandPermission();
+        Context context;
+        frameLayout = findViewById(R.id.frameLayout);
+        speechRecognizer = speechRecognizer.createSpeechRecognizer(VidcallActivity.this);
+        speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
+        speechRecognizer.setRecognitionListener(new RecognitionListener() {
+            @Override
+            public void onReadyForSpeech(Bundle bundle) {
+
+            }
+
+            @Override
+            public void onBeginningOfSpeech() {
+
+            }
+
+            @Override
+            public void onRmsChanged(float v) {
+
+            }
+
+            @Override
+            public void onBufferReceived(byte[] bytes) {
+
+            }
+
+            @Override
+            public void onEndOfSpeech() {
+
+            }
+
+            @Override
+            public void onError(int i) {
+
+            }
+
+            @Override
+            public void onResults(Bundle bundle) {
+                ArrayList<String> matchesFound = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+
+                if (matchesFound != null){
+                    keeper = matchesFound.get(0);
+                    SharedPreferences.Editor edittext = analysistext.edit();
+                    edittext.putString("speechtext",keeper);
+                    edittext.apply();
+
+                }
+
+            }
+
+            @Override
+            public void onPartialResults(Bundle bundle) {
+
+            }
+
+            @Override
+            public void onEvent(int i, Bundle bundle) {
+
+            }
+        });
+
+        frameLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch(motionEvent.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        speechRecognizer.startListening(speechRecognizerIntent);
+                        keeper = "";
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        speechRecognizer.stopListening();
+                        break;
+                }
+                return false;
+            }
+        });
+
+
+
+    }
+
+    private void checkVoiceCommandPermission(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!(ContextCompat.checkSelfPermission(VidcallActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED)) {
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
+            }
+        }
     }
 
     @Override
