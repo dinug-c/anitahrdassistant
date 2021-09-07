@@ -63,6 +63,10 @@ class HRDDetailInterviewActivity : AppCompatActivity() {
         hrddetail_button_start.onClick {
             startActivity<VidcallActivity>()
         }
+
+        hrddetail_button_salary.onClick {
+            toast("Coming soon...")
+        }
     }
 
     private fun loadInterview(roomCode: String) {
