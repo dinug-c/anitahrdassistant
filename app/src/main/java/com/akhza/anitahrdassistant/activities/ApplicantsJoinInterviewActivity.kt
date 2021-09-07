@@ -79,7 +79,7 @@ class ApplicantsJoinInterviewActivity : AppCompatActivity() {
                         if (taskId.result!!.size() != 0 && !taskId.result!!.isEmpty) {
                             for(ds in taskId.result!!) {
                                 if(ds.getString("roomToken") == roomCode) {
-                                    if(!ds.getBoolean("recruiterJoined")!!) {
+                                    if(ds.getBoolean("recruiterJoined")?.equals(false)!!) {
                                         val companyName = ds.getString("company")
                                         val position = ds.getString("position")
                                         val emailHrd = ds.getString("emailHrd")
