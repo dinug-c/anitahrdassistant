@@ -22,6 +22,7 @@
         <activity android:name=".activities.GetStartedActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SignupActivity" />
+        <activity android:name=".VidcallActivity" />
         <activity android:name=".activities.EntranceActivity" />
         <activity
             android:name=".activities.HRDCreateInterviewActivity"

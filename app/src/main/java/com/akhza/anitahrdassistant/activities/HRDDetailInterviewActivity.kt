@@ -10,6 +10,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.akhza.anitahrdassistant.R
 import com.akhza.anitahrdassistant.VidcallActivity
+import com.akhza.anitahrdassistant.getsetExpression
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_applicants_join_interview.*
 import kotlinx.android.synthetic.main.activity_hrdcreate_interview.*
@@ -26,18 +27,21 @@ class HRDDetailInterviewActivity : AppCompatActivity() {
 
     lateinit var firestore: FirebaseFirestore
 
+    lateinit var getsetdata: getsetExpression
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hrddetail_interview)
 
         intentDetail = intent
         firestore = FirebaseFirestore.getInstance()
+        getsetdata = getsetExpression();
 
         roomCode = intentDetail.getStringExtra("roomCode").toString()
         state = intentDetail.getStringExtra("state").toString()
 
         if(state == "2") {
-            hrddetail_textView_expressionError.text = "No result"
+            hrddetail_textView_expressionError.text = getsetdata.expressiondata;
             hrddetail_textView_verbalError.text = "No result"
             hrddetail_button_salary.isGone = false
         } else {

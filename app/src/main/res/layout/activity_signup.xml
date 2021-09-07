@@ -140,6 +140,7 @@
            android:text="Daftar"
            android:textSize="20dp"
            android:textStyle="bold"
+           android:textColor="@color/white"
            android:layout_marginBottom="10dp"
            app:layout_constraintBottom_toTopOf="@+id/logintxt"
            app:layout_constraintEnd_toEndOf="parent"

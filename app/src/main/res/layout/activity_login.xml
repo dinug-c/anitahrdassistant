@@ -117,6 +117,7 @@
                 android:background="@drawable/yellow_btn"
                 android:text="Enter"
                 android:textSize="20dp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <TextView

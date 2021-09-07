@@ -8,13 +8,26 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akhza.anitahrdassistant.R;
+import com.akhza.anitahrdassistant.VidcallActivity;
+import com.akhza.anitahrdassistant.getsetExpression;
+
+import org.opencv.android.OpenCVLoader;
 
 public class EntranceActivity extends AppCompatActivity {
 
     SharedPreferences loginfo;
+
+    static {
+        if(OpenCVLoader.initDebug()) {
+            Log.d("Message: ", "Ok");
+        } else {
+            Log.d("Message: ", "Nope");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +38,7 @@ public class EntranceActivity extends AppCompatActivity {
         Boolean logininfo = loginfo.getBoolean("log", false);
         String email = loginfo.getString("email", "");
         String state = loginfo.getString("state", "");
+
 
         if (logininfo == true) {
             Log.d("EMAIL SHAREDPREF", email);
